@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reset your Metcon password</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">METCON</a></div></header>
+
+<main class="wrap">
+  <div class="card">
+    <div id="loading">
+      <h1>One moment…</h1>
+      <p>Checking your link.</p>
+    </div>
+
+    <form id="reset" hidden>
+      <h1>Choose a new password</h1>
+      <p>At least 8 characters.</p>
+      <input type="password" id="password" placeholder="New password" autocomplete="new-password" minlength="8" required>
+      <input type="password" id="confirm" placeholder="Repeat it" autocomplete="new-password" minlength="8" required>
+      <button type="submit" id="submit">Set password</button>
+      <div class="status" id="status"></div>
+    </form>
+
+    <div id="confirmed" hidden>
+      <h1>Email confirmed</h1>
+      <p>You can close this tab and sign in on your phone.</p>
+    </div>
+
+    <div id="expired" hidden>
+      <h1>That link has expired</h1>
+      <p>
+        Password reset links are single-use and short-lived. Open Metcon and tap
+        "Forgot password" again to get a fresh one.
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+// Supabase project. Both values are PUBLIC by design — the publishable key can
+// only ever act as the signed-in user, and the same pair ships inside the apps.
+//
+// KEEP IN SYNC with the connect-src directive in vercel.json. If the project ref
+// changes here and not there, the browser blocks this request with no visible
+// error and password recovery fails silently.
+const CFG = {
+  url: "https://YOUR_PROJECT_REF.supabase.co",
+  key: "YOUR_PUBLISHABLE_KEY",
+};
+
+// The token arrives in the URL FRAGMENT, which browsers never send to a server —
+// so the host serving this page never sees it. That is the entire reason this
+// flow is a static page rather than a server endpoint.
+const params = new URLSearchParams(location.hash.slice(1));
+const accessToken = params.get("access_token");
+const type = params.get("type");
+
+const show = (id) => {
+  for (const el of ["loading", "reset", "confirmed", "expired"]) {
+    document.getElementById(el).hidden = el !== id;
+  }
+};
+
+if (!accessToken) {
+  // No fragment at all: either the link expired, or somebody opened this page
+  // directly. Same message either way — we cannot tell them apart, and guessing
+  // would be worse than the honest one.
+  show("expired");
+} else if (type === "signup" || type === "email_change") {
+  show("confirmed");
+} else {
+  show("reset");
+}
+
+document.getElementById("reset").addEventListener("submit", async (event) => {
+  // The whole point of this handler: without preventDefault the form navigates
+  // and the password ends up in a URL. form-action 'self' in the CSP is the
+  // backstop if this script ever fails to attach.
+  event.preventDefault();
+
+  const status = document.getElementById("status");
+  const button = document.getElementById("submit");
+  const password = document.getElementById("password").value;
+  const confirm = document.getElementById("confirm").value;
+
+  if (password !== confirm) {
+    status.className = "status error";
+    status.textContent = "Those don't match.";
+    return;
+  }
+
+  button.disabled = true;
+  status.className = "status";
+  status.textContent = "Saving…";
+
+  try {
+    const response = await fetch(CFG.url + "/auth/v1/user", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: CFG.key,
+        Authorization: "Bearer " + accessToken,
+      },
+      body: JSON.stringify({ password }),
+    });
+    if (!response.ok) {
+      const body = await response.json().catch(() => ({}));
+      throw new Error(body.msg || body.error_description || "That didn't work.");
+    }
+    status.className = "status ok";
+    status.textContent = "Done. Sign in on your phone with the new password.";
+    button.hidden = true;
+  } catch (error) {
+    status.className = "status error";
+    status.textContent = error.message;
+    button.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
