@@ -28,6 +28,8 @@
     <tr><td>Email address</td><td>To sign you in</td><td>Until you delete your account</td></tr>
     <tr><td>Display name, avatar, gym name</td><td>To show you to your box</td><td>Until you delete your account</td></tr>
     <tr><td>Workouts, results, sets, personal records</td><td>The logbook — the product</td><td>Until you delete them, or your account</td></tr>
+    <tr><td>Which movements you scaled, and what to</td><td>Your Rx history, the “still scaling” list, and better coach programming</td><td>Until you delete the result, or your account</td></tr>
+    <tr><td>Your chosen language</td><td>So coach notes and scan results are written in it, including when no device is asking</td><td>Until you delete your account</td></tr>
     <tr><td>Bodyweight, body fat, resting heart rate</td><td>Optional; charts only</td><td>Until you delete them</td></tr>
     <tr><td>Coach requests and generated workouts</td><td>Rate limiting, cost attribution, and support when a workout comes out wrong</td><td>12 months</td></tr>
     <tr><td>Whiteboard <strong>transcriptions</strong> — the text read off a board, never the photo</td><td>Rate limiting, and support when a scan comes out wrong</td><td>12 months</td></tr>
@@ -36,7 +38,8 @@
 
   <h2>What we deliberately do not store</h2>
   <ul>
-    <li>We do not record raw prompt text sent to the AI coach beyond the structured fields you selected — minutes, equipment, stimulus, level. There is no free-text box on that screen, by design.</li>
+    <li>We do not record raw prompt text sent to the AI coach beyond the structured fields you selected — minutes, equipment, stimulus, level. There is no free-text box on that screen, by design. The coach is also told which movements you still scale so it can program around them; that stays inside your account.</li>
+    <li>Analytics never learns which movement you scaled or what you scaled it to. It gets a count — “this session had five movements, one of them scaled” — and nothing else.</li>
     <li>
       <strong>We do not keep whiteboard photographs.</strong> When you scan a board, the
       image is sent to Anthropic to be read and is deleted from your phone before the
@@ -48,6 +51,19 @@
     <li>We do not use device location. The app requests no location permission.</li>
     <li>We do not read your Health or Google Fit data. If that ever changes, this section changes first.</li>
   </ul>
+
+  <h2>Who can see what you scaled</h2>
+  <p>
+    Nobody but you. A box leaderboard shows a name, a score and whether the session was
+    Rx — it is a projection built by our API, not a view of your rows. The per-movement
+    breakdown, including anything you typed into “what did you do instead”, never leaves
+    your own logbook.
+  </p>
+  <p>
+    What somebody scales is the most personal thing in a training log. It is the thing
+    people are quietly embarrassed about, and it is exactly what would make the feature
+    unusable if it were a scoreboard.
+  </p>
 
   <h2>The AI coach</h2>
   <p>
