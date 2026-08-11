@@ -30,12 +30,21 @@
     <tr><td>Workouts, results, sets, personal records</td><td>The logbook — the product</td><td>Until you delete them, or your account</td></tr>
     <tr><td>Bodyweight, body fat, resting heart rate</td><td>Optional; charts only</td><td>Until you delete them</td></tr>
     <tr><td>Coach requests and generated workouts</td><td>Rate limiting, cost attribution, and support when a workout comes out wrong</td><td>12 months</td></tr>
+    <tr><td>Whiteboard <strong>transcriptions</strong> — the text read off a board, never the photo</td><td>Rate limiting, and support when a scan comes out wrong</td><td>12 months</td></tr>
     <tr><td>Ad impressions and clicks</td><td>To know whether the ad slots are worth showing</td><td>12 months</td></tr>
   </table>
 
   <h2>What we deliberately do not store</h2>
   <ul>
     <li>We do not record raw prompt text sent to the AI coach beyond the structured fields you selected — minutes, equipment, stimulus, level. There is no free-text box on that screen, by design.</li>
+    <li>
+      <strong>We do not keep whiteboard photographs.</strong> When you scan a board, the
+      image is sent to Anthropic to be read and is deleted from your phone before the
+      request even completes. It is never written to our database, never put in your
+      gallery, and never stored anywhere by us — what we keep is the text that was read.
+      A gym whiteboard photo routinely catches other members in frame, and we have no
+      business holding pictures of people who never installed the app.
+    </li>
     <li>We do not use device location. The app requests no location permission.</li>
     <li>We do not read your Health or Google Fit data. If that ever changes, this section changes first.</li>
   </ul>
@@ -46,6 +55,10 @@
     how long you have, the equipment you selected, your experience level, your recent
     workout <em>titles</em> and stimulus, and your one-rep maxes. That is what lets it
     prescribe real loads instead of "moderate".
+  </p>
+  <p>
+    When you scan a whiteboard, we send Anthropic the photograph so it can be read.
+    Nothing else about you goes with it.
   </p>
   <p>
     We do not send your name, email, notes, bodyweight or injuries. Anthropic does not
@@ -106,8 +119,8 @@
 
   <h2>Where data lives</h2>
   <p>
-    Supabase (Postgres, EU region), Anthropic (coach requests), PostHog (EU, analytics,
-    optional), Google (ads), RevenueCat (subscription state).
+    Supabase (Postgres, EU region), Anthropic (coach requests and whiteboard reading),
+    PostHog (EU, analytics, optional), Google (ads), RevenueCat (subscription state).
   </p>
 
   <h2>Changes</h2>
