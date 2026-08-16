@@ -53,13 +53,32 @@ is the actual threat.
 
 ## Deploying
 
-Add New → Project → import `yuvdror/metcon-public`. Framework preset **Other**,
-build command **empty**, output directory **`.`**. Every push to the default
-branch deploys; pull requests get preview URLs.
+**Already deployed.** Vercel project `metcon-public` under
+`yuvdror-5711s-projects` (`prj_ce9uI5Bg4i3QaAW2yPlAEPLk9g91`), created by CLI
+rather than a Git import, so `vercel deploy --prod` from this directory is what
+ships it. Framework preset **Other**, no build command, output **`.`**.
 
-Then attach `thruster.cloud` in **Project → Settings → Domains** and create the DNS
-records Vercel shows you. Do not move the nameservers if the domain carries email
-sending records — add only the A/CNAME records asked for.
+`ssoProtection` is `all_except_custom_domains` — the same as kinsense-public.
+That means the `*.vercel.app` URLs sit behind a Vercel login (they 302 to
+`vercel.com/sso-api`, which is expected and not a fault) while the custom domain
+serves publicly. Do not "fix" the 302 by turning SSO off; it is what keeps
+preview URLs from being indexed.
+
+`thruster.cloud` is attached to the project. The **one** DNS change it needs, at
+IONOS:
+
+```
+A   thruster.cloud   76.76.21.21
+```
+
+replacing the `74.208.236.210` parking record.
+
+> **Take the A record, not the nameservers.** Vercel offers to have you point the
+> domain's nameservers at `ns1/ns2.vercel-dns.com` and calls it recommended. Doing
+> that here would drop every record IONOS holds — the `mx00/mx01.ionos.com` MX,
+> the root SPF, `_dmarc` — and outbound auth mail now goes through IONOS SMTP, so
+> it would take sign-up confirmation and password reset down with it. The A record
+> achieves the same thing and touches nothing else.
 
 ## Before this goes live
 
