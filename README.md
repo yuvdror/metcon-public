@@ -1,4 +1,4 @@
-# metcon-public
+# thruster-public (repo still named metcon-public)
 
 Every public static page for the **Metcon** app. Deployed on Vercel.
 
@@ -57,16 +57,19 @@ Add New → Project → import `yuvdror/metcon-public`. Framework preset **Other
 build command **empty**, output directory **`.`**. Every push to the default
 branch deploys; pull requests get preview URLs.
 
-Then attach `metcon.fit` in **Project → Settings → Domains** and create the DNS
+Then attach `thruster.cloud` in **Project → Settings → Domains** and create the DNS
 records Vercel shows you. Do not move the nameservers if the domain carries email
 sending records — add only the A/CNAME records asked for.
 
 ## Before this goes live
 
-- [ ] Replace `YOUR_PROJECT_REF` in `vercel.json` and `auth-callback.html` with
-      the real Supabase project ref. Recovery fails silently until you do.
+- [x] ~~Replace `YOUR_PROJECT_REF`~~ — done. Both files carry
+      `hgpzwxsynzorhlpjliow` and the publishable (anon) key. The `connect-src`
+      directive in `vercel.json` and `CFG.url` in `auth-callback.html` must stay
+      in agreement: if one moves and the other does not, the browser blocks the
+      request with no visible error and password recovery fails silently.
 - [ ] Set Supabase → Authentication → URL Configuration → **Site URL** to
-      `https://metcon.fit/auth-callback.html` and add it to **Redirect URLs**.
+      `https://thruster.cloud/auth-callback.html` and add it to **Redirect URLs**.
 - [ ] Test a real password reset end to end, triggered **from the app**. Opening
       the page by hand proves nothing — with no URL fragment it correctly shows
       its "link has expired" state.

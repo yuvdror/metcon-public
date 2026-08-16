@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /auth-callback.html
 
-Sitemap: https://metcon.fit/sitemap.xml
+Sitemap: https://thruster.cloud/sitemap.xml
