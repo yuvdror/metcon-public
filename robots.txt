@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /auth-callback.html
+Disallow: /admin
+Disallow: /admin.html
 
 Sitemap: https://thruster.cloud/sitemap.xml
