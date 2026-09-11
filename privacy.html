@@ -124,10 +124,11 @@
     was viewed, source coach_quota".
   </p>
   <p>
-    Analytics is the only part of Thruster that leaves the EEA — your account, your
-    workouts and your results stay in the EU (see "Where data lives" below). It carries no
-    workout content and no name, and the switch in Me turns it off completely. If you would
-    rather nothing at all crossed the Atlantic, that switch is the one that does it.
+    Analytics carries no workout content and no name, and the switch in Me turns it off
+    completely. Note that it is not the only thing hosted outside the EEA: the database
+    itself runs in the United States (see "Where data lives" below), so turning analytics
+    off reduces what is collected but does not keep your data on one side of the
+    Atlantic.
   </p>
   <p>
     Autocapture and session replay are <strong>disabled in the app's source code</strong>,
@@ -176,7 +177,7 @@
 
   <h2>Where data lives</h2>
   <p>
-    Supabase (Postgres, EU region), Anthropic (coach requests, warm-ups and whiteboard
+    Supabase (Postgres, United States), Anthropic (coach requests, warm-ups and whiteboard
     reading), Google (form-check video analysis only, deleted as soon as the feedback
     returns), PostHog (United States, analytics, optional), RevenueCat (subscription
     state), IONOS (delivers your sign-up confirmation and password-reset email; it sees
