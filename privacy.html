@@ -96,6 +96,26 @@
     train models on data sent through the API.
   </p>
 
+  <h2>Form check</h2>
+  <p>
+    Form check is the one feature that sends video, and the one feature that goes to a
+    different company. When you record a movement and ask for feedback, we send
+    <strong>Google</strong> the video &mdash; up to one minute &mdash; along with which
+    movement you said it is, your experience level, and your best single on that
+    movement. Nothing else about you goes with it.
+  </p>
+  <p>
+    The video is never stored by Thruster: not on our servers, not in our database, and
+    it is removed from your phone once it has been sent. On Google's side it is uploaded
+    only for the length of the analysis and we <strong>delete it explicitly as soon as
+    your feedback comes back</strong>, rather than leaving it to expire on its own.
+  </p>
+  <p>
+    Form check gives technique feedback, not medical advice. It does not diagnose
+    injuries and it is not a substitute for a coach or a clinician who can see you in
+    person.
+  </p>
+
   <h2>Analytics</h2>
   <p>
     Optional, and off with one switch in the app (Me → Share anonymous usage data).
@@ -157,9 +177,10 @@
   <h2>Where data lives</h2>
   <p>
     Supabase (Postgres, EU region), Anthropic (coach requests, warm-ups and whiteboard
-    reading), PostHog (United States, analytics, optional), Google (ads), RevenueCat (subscription state),
-    IONOS (delivers your sign-up confirmation and password-reset email; it sees your
-    email address and nothing else).
+    reading), Google (form-check video analysis only, deleted as soon as the feedback
+    returns), PostHog (United States, analytics, optional), RevenueCat (subscription
+    state), IONOS (delivers your sign-up confirmation and password-reset email; it sees
+    your email address and nothing else).
   </p>
 
   <h2>Changes</h2>
