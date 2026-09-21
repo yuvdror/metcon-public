@@ -1,3 +1,10 @@
+# The AI crawlers — GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended
+# and the rest — are covered by the wildcard below and are allowed on purpose: being
+# readable by them is how Thruster turns up when somebody asks an assistant for a
+# workout timer. Do NOT "tidy" this by adding a named block per bot. A crawler obeys
+# the MOST SPECIFIC group that matches it and ignores the wildcard entirely, so a
+# `User-agent: GPTBot` block would silently un-disallow /admin for that one crawler.
+
 User-agent: *
 Allow: /
 Disallow: /auth-callback.html

@@ -106,3 +106,10 @@ button[disabled] { background: var(--surface-2); color: var(--muted); cursor: de
 .status { margin-top: 16px; font-size: 15px; }
 .status.error { color: var(--orange); }
 .status.ok { color: var(--lime); }
+
+/* FAQ — the question is the heading and the answer is the first sentence under
+   it. That shape is for a person skimming for one fact, and it happens to be
+   exactly what a search engine or an AI assistant can quote without mangling. */
+.faq h2 { font-size: 20px; margin-top: 38px; }
+.faq p { color: var(--muted); }
+.faq p.answer { color: var(--text); }

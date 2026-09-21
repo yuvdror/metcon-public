@@ -20,6 +20,10 @@
       "destination": "/terms.html"
     },
     {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
       "source": "/support",
       "destination": "/support.html"
     },

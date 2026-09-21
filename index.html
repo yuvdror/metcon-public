@@ -18,6 +18,56 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/style.css">
+
+<!-- Structured data: the machine-readable version of "what is this and does it
+     cost anything". An assistant deciding whether Thruster belongs in an answer
+     about free workout timers should not have to infer that from prose.
+
+     Deliberately absent: aggregateRating. Inventing one is both a lie and a
+     Google structured-data penalty. Add it — from the real App Store figures —
+     once there are enough ratings to quote.
+
+     Also absent: a Google Play downloadUrl, while Android is in closed testing
+     and has no public listing to link to. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Thruster",
+  "alternateName": "Thruster: WOD Timer & AI Coach",
+  "url": "https://thruster.cloud/",
+  "downloadUrl": "https://apps.apple.com/app/id6802562452",
+  "applicationCategory": "HealthApplication",
+  "applicationSubCategory": "Fitness",
+  "operatingSystem": "iOS 16.0 or later, watchOS 10.0 or later, Android 8.0 or later",
+  "description": "A free, drift-proof workout timer for AMRAP, EMOM, For Time, Tabata and custom intervals, on iPhone, Apple Watch and Android, with a logbook and goals that are also free. Thruster Pro adds an AI coach that writes each session from your own logbook, AI warm-ups, whiteboard scanning, training plans and AI form check on video.",
+  "inLanguage": ["en", "de", "es", "fr", "it", "pt-BR", "he"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free to download. The timer, logbook and goals are free permanently; Thruster Pro is an optional subscription with a 7-day free trial."
+  },
+  "featureList": [
+    "Drift-proof workout timer: For Time, AMRAP, EMOM, E2MOM, Tabata, custom intervals and rest",
+    "Apple Watch app with per-round haptics, live heart rate and Apple Health workout sessions",
+    "Free workout and strength logbook with RPE and estimated one-rep max",
+    "Seventeen training types including CrossFit-style MetCon, weightlifting, powerlifting, Hyrox, kettlebell, rowing, swimming, boxing, yoga and bodybuilding",
+    "AI coach that writes each session from your logged maxes, recent scores and Rx history",
+    "AI form check: video analysis naming the fault, the moment in the rep and a corrective drill",
+    "Whiteboard scanner that turns a photo of the gym whiteboard into a timer and a log entry",
+    "Benchmark library including Fran, Helen, Grace, Isabel, Diane, Cindy, Murph and DT",
+    "Movement library of 160 movements with written Rx standards",
+    "Plate calculator and goal tracking with progress measured from a baseline"
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Thruster",
+    "url": "https://thruster.cloud/",
+    "email": "info@thruster.cloud"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -29,6 +79,7 @@
       <a href="#coach">The coach</a>
       <a href="#features">Features</a>
       <a href="#pricing">Pricing</a>
+      <a href="/faq">FAQ</a>
       <a href="/privacy">Privacy</a>
     </nav>
   </div>
@@ -247,6 +298,7 @@ standing over the bar.</div>
 
 <footer>
   <div class="wrap">
+    <a href="/faq">FAQ</a>
     <a href="/privacy">Privacy policy</a>
     <a href="/terms">Terms of use</a>
     <a href="/support">Support</a>

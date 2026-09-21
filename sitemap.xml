@@ -4,9 +4,18 @@
     <loc>https://thruster.cloud/</loc>
   </url>
   <url>
+    <loc>https://thruster.cloud/faq</loc>
+  </url>
+  <url>
     <loc>https://thruster.cloud/privacy</loc>
   </url>
   <url>
+    <loc>https://thruster.cloud/terms</loc>
+  </url>
+  <url>
     <loc>https://thruster.cloud/support</loc>
+  </url>
+  <url>
+    <loc>https://thruster.cloud/delete-account</loc>
   </url>
 </urlset>
